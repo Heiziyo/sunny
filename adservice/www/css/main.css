@@ -1,0 +1,70 @@
+@charset "utf-8";
+
+/**
+ * main.css
+ *
+ * @author 
+ * @version 2014/02/26
+ */
+
+/*body {
+padding-top: 0px;
+padding-bottom: 40px;
+font-size:12px;
+font-family:"宋体";
+}
+*/
+.numeric,.alpha{ime-mode:disabled}
+.ml10{margin-left:10px}
+.ml20{margin-left:20px}
+.mr10{margin-right:10px}
+.mr20{margin-right:20px}
+.mt10{margin-top:10px}
+.mt20{margin-top:20px}
+.mb10{margin-bottom:10px}
+.mb20{margin-bottom:20px}
+.control-label i{color:red;font-weight:bold;padding-right:5px}
+.control-label span{color:red;font-weight:bold;padding-right:5px}
+
+#popup-msg{position:fixed !important;position:absolute;top:0px;_top:expression(eval(document.documentElement.scrollTop));border-radius:0 0 3px 3px;-moz-border-radius:0 0 3px 3px;-webkit-border-radius:0 0 3px 3px;z-index:10000;font-size:14px;}
+.panel{margin-top: 20px;}
+.panel input,.panel textarea,.panel .checkbox{
+    margin-top: 0;
+}
+.panel label span{
+    margin-right: 25px;
+}
+.btn,.label{
+    border-radius: 0 !important;
+}
+.label{
+    padding: 5px 10px;
+}
+input,textarea,select,.ms-choice{
+    border-radius: 0 !important;
+}
+.cuscont_list {
+    width:210px;
+    height:auto;
+    margin:auto;
+    margin-bottom:25px;
+    color:#999; font-size:14px;
+    background:#fff;
+    padding:10px 0px 10px 10px;
+    overflow:hidden;
+    position:relative;
+    top:45px;
+    right:250px;
+    z-index:99;
+    display: none;
+}
+.cuscont_list ul{
+    padding: 0;
+    margin: 0;
+}
+.cuscont_list li {
+    width:95px;
+    margin-left:10px;
+    line-height:30px !important;
+    float:left;
+}

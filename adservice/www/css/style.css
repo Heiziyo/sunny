@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ padding:0; margin:0; list-style: none; -webkit-transition-timing-function: ease-in-out; -moz-transition-timing-function: ease-in-out; -ms-transition-timing-function: ease-in-out; -o-transition-timing-function: ease-in-out; transition-timing-function: ease-in-out;}
+html,body{ width:100%; height:auto; font-family:"微软雅黑"; background:#2e363f;}
+a,img{border:0; text-decoration:none;}
+a:hover { text-decoration:none;}
+.fwhite { color:#fff;}
+
+.overwriteul {margin:0}
+#top_box { width:100%; height:80px; margin:auto; background: url(/images/top_bg.jpg) repeat-x;}
+.top_logo { width:205px; height:80px; float:left;}
+.top_navbox { width:1000px; height:80px; float:left;}
+.top_nav { width:750px; height:40px; float:left;}
+/*#top_box { width:100%; height:40px; margin:auto; background: url(/images/top_bg.jpg) repeat-x;}
+.top_logo { width:230px; height:40px; float:left;color:#ffffff;line-height: 40px;font-size: 18px;text-align: center;}
+.top_navbox { width:1000px; height:40px; float:left;}
+.top_nav { width:750px; height:40px; float:left;}*/
+/*.top_nav li { width:150px; height:40px; float:left;}
+.top_nav_01 { background:url(/images/nav_custom_01.jpg) no-repeat;}
+.top_nav_01:hover { background:url(/images/nav_custom_02.jpg);}
+.top_nav_01-active { background:url(/images/nav_custom_02.jpg);}
+.top_nav_02 { background:url(/images/nav_liuliang_01.jpg) no-repeat;}
+.top_nav_02:hover { background:url(/images/nav_liuliang_03.jpg);}
+.top_nav_02-active { background:url(/images/nav_liuliang_03.jpg);}
+.top_nav_03 { background:url(/images/nav_dingdan_01.jpg) no-repeat;}
+.top_nav_03:hover { background:url(/images/nav_dingdan_03.jpg);}
+.top_nav_03-active { background:url(/images/nav_dingdan_03.jpg);}
+.top_nav_04 { background:url(/images/nav_sale_01.jpg) no-repeat;}
+.top_nav_04:hover { background:url(/images/nav_sale_03.jpg);}
+.top_nav_04-active { background:url(/images/nav_sale_03.jpg);}
+.top_nav_05 { background:url(/images/nav_system_01.jpg) no-repeat;}
+.top_nav_05:hover { background:url(/images/nav_system_03.jpg);}
+.top_nav_05-active { background:url(/images/nav_system_03.jpg);}*/
+.top_nav li { width:150px; height:40px; float:left; font-size:14px; /*color:#4c535b;*/color: #91a4b9; text-indent:4em; line-height:40px;}
+.top_nav_01 { background:url(../images/nav_custom_01.jpg) no-repeat;}
+.top_nav_01:hover { background:url(../images/nav_custom_02.jpg); color:#25b6a0;}
+.top_nav_02 { background:url(../images/nav_liuliang_01.jpg) no-repeat;}
+.top_nav_02:hover { background:url(../images/nav_liuliang_02.jpg); color:#25b6a0;}
+.top_nav_03 { background:url(../images/nav_dingdan_01.jpg) no-repeat;}
+.top_nav_03:hover { background:url(../images/nav_dingdan_02.jpg); color:#25b6a0;}
+.top_nav_04 { background:url(../images/nav_sale_01.jpg) no-repeat;}
+.top_nav_04:hover { background:url(../images/nav_sale_02.jpg); color:#25b6a0;}
+.top_nav_05 { background:url(../images/nav_system_01.jpg) no-repeat;}
+.top_nav_05:hover { background:url(../images/nav_system_02.jpg); color:#25b6a0;}
+.top_nav_tool { width:240px; height:40px; float:left;}
+.top_nav_hello { width:150px; height:40px; float:left; background:url(/images/nav_bg.jpg) no-repeat; line-height:40px; text-indent:50px; color:#878c8d; font-size:14px;}
+.top_nav_exit { width:90px; height:40px; float:left; background:url(/images/nav_exit.jpg) no-repeat; }
+
+.top_mbx { width:750px; float:left; height:40px; background:url(/images/nav_mbg.jpg) no-repeat; text-indent:58px; line-height:40px; font-size:12px;}
+.top_mbx a { color:#000;}
+
+#cont_box { width:100%; min-height:680px; margin:auto; background:#eee;display:inline-flex;bottom:20px}
+.cont_left { width:205px; background:#2e363f; min-height:600px;}
+.cont_left li { width:205px; height:50px; float:left;}
+.cont_left_01 { background:url(/images/cont_left_02.jpg) no-repeat; line-height:50px; color:#53585c; text-indent:50px;}
+.cont_left_01 a { text-decoration:none;}
+.cont_left_01:hover { background:url(/images/cont_left_01.jpg) no-repeat; color:#fff;}
+.cont_left_01-active {
+    background:url(/images/cont_left_01.jpg) no-repeat;
+    color:#fff;
+    text-decoration:none;
+    line-height:50px;
+    text-indent:50px;
+}
+
+.contentdiv {
+    width:100%;
+    margin-top:20px;
+    margin-left:20px;
+    font-size:12px;
+    bottom:20px;
+    height:750px;
+    overflow-y:scroll;
+}
+
+.copy_right, .copy_right a {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 13px;
+    width:100%;
+}
+
+/* page */
+.pagination { margin:auto; width:100%; height:20px; text-align:center; color:#999;}
+.pagination a { width:20px; height:20px; text-align:center; margin-left:10px; font-size:11px;}
+.page_link { width:20px; height:20px; text-align:center; margin-left:10px;}
+.cur { text-align:center; margin-left:10px; background:#25b6a0; padding:5px 8px; color:#fff;}
+

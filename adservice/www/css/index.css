@@ -1,0 +1,13 @@
+@charset "utf-8";
+/* CSS Document */
+
+#loginbox { width:610px; height:310px; margin:auto; margin-top:150px; border-top:1px solid #3f4954; position:relative; color:#bbbbbb; font-size:11px;}
+
+.login_logo { width:175px; height:20px; margin:auto; margin-top:45px;}
+.login_textarea { width:490px; height:40px; margin:auto; margin-top:45px;}
+.login_lefticon { width:50px; height:40px; float:left;}
+.login_rightta { width:440px; height:40px; float:left; border:0px; text-indent:1.5em; color:#bbbbbb; font-size:11px;}
+.login_toolarea { border-top:1px solid #3f4954; margin-top:45px; width:490px; height:30px; padding-left:60px; padding-right:60px;}
+.login_forget { width:150px; float:left; height:30px; line-height:30px; padding-top:25px;}
+.login_forget a { color:#bbbbbb;}
+.login_sumbit { width:85px; float:right; height:30px; line-height:30px; background:#df1954; margin-top:15px; text-align:center; color:#FFF; font-size:10px;}
