@@ -38,7 +38,7 @@
         </div>
     </form>
     <div id="popup-msg" class="alert" style="display:none"></div>
-    <script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
     <script src="/js/common.js?v=03"></script>
     <div style="clear: both;"></div>
     <div class="copy_right">
