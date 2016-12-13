@@ -3,15 +3,15 @@ Config::add(array(
     'db_physical' => array( //physical master-slave shard configuration
         0 => array(
             'write' => array(
-                'host' => '127.0.0.1',
+                'host' => '47.89.44.33',
                 'port' => 3306
             ),
             'read' => array(
-                'host' => '127.0.0.1',
+                'host' => '47.89.44.33',
                 'port' => 3306
             ),
             'db_user' => 'root',
-            'db_pwd' => 'root'
+            'db_pwd' => '123456'
         )
     ),
     'db_cluster' => array(),
@@ -30,7 +30,7 @@ Config::add(array(
         ),
         'ad_service' => array(
             'map' => 0,
-            'db_name' => 'ceshi'
+            'db_name' => 'sunny'
         ),
     ),
     'cache_physical' => array(
@@ -56,10 +56,5 @@ Config::add(array(
         'rt_adx' => '0.0',
         'rt_uplog' => '0.0',
     ),
-    'upload' => array(
-        'DOMAIN ' => 'http://ads.com/',
-        'upload_limit ' => '52428800',
-        'uploaddir ' => 'data/fastwebcdnroot',
-
-    )
+   
 ));
