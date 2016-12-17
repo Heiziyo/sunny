@@ -59,8 +59,7 @@ class Advertise extends MY_Controller {
 }
 class MyScoffoldHelper extends CommonScaffoldHelper {
     public function cb_name($item){
-        $name = F::$f->Model_HuiYuan->getMap($item['memberid']);
-        return d($name['nickname'],$name['realname'],'--');
+        return d($item['nickname'],$item['realname'],'--');
     }
 
 
