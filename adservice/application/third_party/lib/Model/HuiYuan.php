@@ -12,21 +12,14 @@ class Model_HuiYuan extends Model_Handler
     {
         parent::__construct('memberinfo', 'ad_service');
     }
-    public function getMap($option = array(), $isSelect = FALSE){
-        return $this->getApptypeMap($option, $isSelect);
-    }
 
-    public function getApptypeMap($id){
-
-            $option = array(array('id' => $id));
-
-
-        $map = array();
-
-        $rows = $this->select($option);
-        foreach($rows as $row){
-            $map[$row['id']] = $row['nickname'];
+    public function getMap($id)
+    {
+        if(empty($id)){
+            return false;
         }
-        return $map;
+        $option = array(array('id' => $id));
+        $rows = $this->selectOne($option);
+        return $rows;
     }
 }

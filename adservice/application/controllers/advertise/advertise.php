@@ -33,7 +33,7 @@ class Advertise extends MY_Controller {
         $column = array(
             'id' => 'id',
             '作品名称' => 'productname|show',
-            '作者名称' => 'name_full|show',
+            '作者名称' => 'cb_name|show',
             '指导老师' => 'teachername|show',
             '{sort|updatetime}更新时间' => 'updatetime|show',
         );
@@ -71,4 +71,8 @@ class Advertise extends MY_Controller {
 
 class MyScoffoldHelper extends CommonScaffoldHelper {
 
+    public function cb_name($item){
+        $name = F::$f->Model_HuiYuan->getMap($item['memberid']);
+        return d($name['nickname'],$name['realname'],'--');
+    }
 }
