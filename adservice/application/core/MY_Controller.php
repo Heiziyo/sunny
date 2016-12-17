@@ -17,65 +17,28 @@ class MY_Controller extends BackendController
     );
 
     public $_menus = array(
-
-
-        '会员管理' => array(
-            'css' => 'top_nav_01',
-            'url' => '/advertise/members',
-            'name' => 'advertise',
-            'permission' => TRUE,
-            'sub' => array(
-                '家长身份' => array(
-                    'url' => '/advertise/members',
-                    'name' => 'parents',
-                    'permission' => TRUE,
-                ),
-                '老师身份'  => array(
-                    'url' => '/advertise/teacher',
-                    'name' => 'teacher',
-                    'permission' => TRUE,
-                ),
-                '游客身份' => array(
-                    'url' => '/advertise/guest',
-                    'name' => 'guest',
-                    'permission' => TRUE,
-                ),
-            ),
-        ),
-
-
         '作品管理' => array(
             'css' => 'top_nav_01',
-            'url' => '/advertise/all',
+            'url' => '/advertise/advertise',
             'name' => 'advertise',
             'permission' => TRUE,
             'sub' => array(
                 '所有作品' => array(
-                    'url' => '/advertise/all',
-                    'name' => 'all',
+                    'url' => '/advertise/advertise',
+                    'name' => 'advertise',
                     'permission' => TRUE,
-                ),
-                '参赛作品'  => array(
-                    'url' => '/advertise/competition',
-                    'name' => 'competition',
-                    'permission' => TRUE,
-                ),
-                '获奖作品' => array(
-                    'url' => '/advertise/prize',
-                    'name' => 'prize',
-                    'permission' => TRUE,
-                ),
+                )
             ),
         ),
 
         '学校管理' => array(
             'css' => 'top_nav_01',
-            'url' => '/advertise/school',
-            'name' => 'advertise',
+            'url' => '/school/school',
+            'name' => 'school',
             'permission' => TRUE,
             'sub' => array(
                 '学校管理' => array(
-                    'url' => '/advertise/school',
+                    'url' => '/school/school',
                     'name' => 'school',
                     'permission' => TRUE,
                 ),
@@ -84,18 +47,18 @@ class MY_Controller extends BackendController
 
         '流量统计' => array(
             'css' => 'top_nav_01',
-            'url' => '/advertise/statistics',
-            'name' => 'advertise',
+            'url' => '/statistics/statistics',
+            'name' => 'statistics',
             'permission' => TRUE,
             'sub' => array(
                 '每日流量' => array(
-                    'url' => '/advertise/statistics',
+                    'url' => '/statistics/statistics',
                     'name' => 'statistics',
                     'permission' => TRUE,
                 ),
 
                 '历史流量' => array(
-                    'url' => '/advertise/history',
+                    'url' => '/statistics/history',
                     'name' => 'history',
                     'permission' => TRUE,
                 ),
@@ -117,6 +80,11 @@ class MY_Controller extends BackendController
                 '角色管理' => array(
                     'url' => '/system/role',
                     'name' => 'role',
+                    'permission' => TRUE,
+                ),
+                '会员列表' => array(
+                    'url' => '/system/members',
+                    'name' => 'members',
                     'permission' => TRUE,
                 ),
                 '操作日志' => array(
