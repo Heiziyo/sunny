@@ -23,7 +23,7 @@ class MY_Controller extends BackendController
             'name' => 'advertise',
             'permission' => TRUE,
             'sub' => array(
-                '所有作品' => array(
+                '作品列表' => array(
                     'url' => '/advertise/advertise',
                     'name' => 'advertise',
                     'permission' => TRUE,

@@ -45,41 +45,17 @@ class Advertise extends MY_Controller {
                 'showCanSel' => TRUE,
                 'keyword' => array(
                     '=' => 'id',
-                    'like' => array('productname'),
+                    'like' => array('productname','nickname','realname'),
                 ),
-                "where"=>$this->fromWhere(),
                 'columns' => $column,
-                'page_size' => 20,
+                'page_size' => 10,
                 'sort' => d($sortFields, 'id DESC'),
             ),
             'helper' => new MyScoffoldHelper($m),
         ));
 
     }
-    public function fromWhere(){
-        $where = array(
-            Db_Sql::LOGIC => 'AND',
-        );
 
-        $params = array();
-        param_get(array(
-            'kw' => 'string',
-        ), '', $params, array(
-
-        ));
-        if (isset($params['kw'])) {
-            $mid =  F::$f->Model_HuiYuan->select( array('nickname' => array('like'=>$params['kw'])),array('select'=>'id'));
-            if(!empty($mid)){
-                foreach ($mid as $val){
-                    $mids[] = $val['id'];
-                }
-                $where[] = array('memberid' => $mids);
-            }
-
-        }
-
-        return $where;
-    }
 }
 class MyScoffoldHelper extends CommonScaffoldHelper {
     public function cb_name($item){
