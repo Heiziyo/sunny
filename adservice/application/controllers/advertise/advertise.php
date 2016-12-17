@@ -31,35 +31,35 @@ class Advertise extends MY_Controller {
         );
 
         $column = array(
-            'id' => 'name_zh',
-            '作品名称' => 'name_en|show',
+            'id' => 'id',
+            '作品名称' => 'productname|show',
             '作者名称' => 'name_full|show',
-            '指导老师' => 'name_full|show',
-            '{sort|update_time}更新时间' => 'cb_update_time|show',
+            '指导老师' => 'teachername|show',
+            '{sort|updatetime}更新时间' => 'updatetime|show',
         );
 
         $this->_setConfig(array(
-            'primary_key'=>'entry_id',
+            'primary_key'=>'id',
             'name' => '广告主',
             'ajax' => FALSE,
             'model' => $m,
             'can_create' => $this->havePrivilege('acCreate'),
             'can_edit' => $this->havePrivilege('acEdit'),
             'can_delete' => $this->havePrivilege('acDelete'),
-            'delete_alias' => array(
-                'field' => 'status',
-                'value' => Db_Model::STATUS_DELETE,
-            ),
+//            'delete_alias' => array(
+//                'field' => 'status',
+//                'value' => Db_Model::STATUS_DELETE,
+//            ),
             'fields' => $this->rules,
             'list' => array(
                 'showCanSel' => TRUE,
                 'keyword' => array(
-                    '=' => 'entry_id',
+                    '=' => 'id',
                     'like' => array('name_zh'),
                 ),
                 'columns' => $column,
                 'page_size' => 10,
-                'sort' => d($sortFields, 'entry_id DESC'),
+                'sort' => d($sortFields, 'id DESC'),
             ),
             'helper' => new MyScoffoldHelper($m),
         ));
