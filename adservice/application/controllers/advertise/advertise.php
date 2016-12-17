@@ -47,7 +47,7 @@ class Advertise extends MY_Controller {
                     '=' => 'id',
                     'like' => array('productname'),
                 ),
-                "where"=>"",
+                "where"=>$this->fromWhere(),
                 'columns' => $column,
                 'page_size' => 10,
                 'sort' => d($sortFields, 'id DESC'),
@@ -56,11 +56,16 @@ class Advertise extends MY_Controller {
         ));
 
     }
+    public function fromWhere(){
 
+    }
 }
 class MyScoffoldHelper extends CommonScaffoldHelper {
     public function cb_name($item){
         $name = F::$f->Model_HuiYuan->getMap($item['memberid']);
         return d($name['nickname'],$name['realname'],'--');
     }
+
+
+
 }
