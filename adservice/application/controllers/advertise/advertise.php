@@ -65,3 +65,8 @@ class Advertise extends MY_Controller {
     }
 
 }
+
+
+class MyScoffoldHelper extends CommonScaffoldHelper {
+
+}
