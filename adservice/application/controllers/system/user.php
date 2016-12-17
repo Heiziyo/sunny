@@ -48,7 +48,7 @@ class User extends MY_Controller
                 array(
                     'field' => 'realname',
                     'label' => '姓名',
-                    'rules' => 'required|max_width[50]',
+                    'rules' => 'required|max_width[10]',
                     'exp'   => '真实姓名',
                 ),
                 array(
@@ -126,7 +126,7 @@ class User extends MY_Controller
                     '用户类型' => 'cb_type',
                     '状态' => 'cb_status',
                 ),
-                'page_size' => 50,
+                'page_size' => 10,
                 'sort' => 'usertype ASC, id DESC',
             ),
             'helper' => new MyScoffoldHelper($m, $this->data['me']),
