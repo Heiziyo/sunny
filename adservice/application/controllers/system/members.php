@@ -21,7 +21,7 @@ class Members extends MY_Controller
             '姓名' => 'realname',
             '昵称' => 'nickname|show',
             '电话' => 'mobile|show',
-            '身份' => 'membertype|show',
+            '身份' => 'cb_membertype|show',
         );
 
         $this->_setConfig(array(
@@ -52,4 +52,7 @@ class Members extends MY_Controller
 
 class MyScoffoldHelper extends CommonScaffoldHelper {
 
+    public function cb_membertype($item){
+        $map = array('');
+    }
 }
