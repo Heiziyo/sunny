@@ -49,7 +49,7 @@ class Advertise extends MY_Controller {
                 ),
                 "where"=>$this->fromWhere(),
                 'columns' => $column,
-                'page_size' => 20,
+                'page_size' => 15,
                 'sort' => d($sortFields, 'id DESC'),
             ),
             'helper' => new MyScoffoldHelper($m),
