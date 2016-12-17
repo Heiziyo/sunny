@@ -10,6 +10,7 @@ class Advertise extends MY_Controller {
         $this->data['c_menu'] = 'advertise';
         $this->data['get_param']=$_GET;
         $m = F::$f->Model_Advertiser;
+
         $sortFields = '';
         $this->rules = array(
             array(
@@ -30,9 +31,10 @@ class Advertise extends MY_Controller {
         );
 
         $column = array(
-            '中文名' => 'name_zh',
-            '英文名' => 'name_en|show',
-            '全称' => 'name_full|show',
+            'id' => 'name_zh',
+            '作品名称' => 'name_en|show',
+            '作者名称' => 'name_full|show',
+            '指导老师' => 'name_full|show',
             '{sort|update_time}更新时间' => 'cb_update_time|show',
         );
 

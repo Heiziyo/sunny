@@ -8,6 +8,9 @@
 
 class Model_Advertiser extends Model_Handler{
 
-
+    public function __construct()
+    {
+        parent::__construct('product', 'ad_service');
+    }
 
 }
