@@ -5,7 +5,7 @@ class Advertise extends MY_Controller {
 
     public function __construct()
     {
-        parent::__construct(TRUE, '添加作品');
+        parent::__construct(TRUE, '作品管理');
 
         $this->data['c_menu'] = 'advertise';
         $this->data['get_param']=$_GET;
@@ -49,7 +49,7 @@ class Advertise extends MY_Controller {
                 ),
                 "where"=>$this->fromWhere(),
                 'columns' => $column,
-                'page_size' => 10,
+                'page_size' => 20,
                 'sort' => d($sortFields, 'id DESC'),
             ),
             'helper' => new MyScoffoldHelper($m),
@@ -57,7 +57,28 @@ class Advertise extends MY_Controller {
 
     }
     public function fromWhere(){
+        $where = array(
+            Db_Sql::LOGIC => 'AND',
+        );
 
+        $params = array();
+        param_get(array(
+            'kw' => 'string',
+        ), '', $params, array(
+
+        ));
+        if (isset($params['kw'])) {
+            $mid =  F::$f->Model_HuiYuan->select( array('nickname' => array('like'=>$params['kw'])),array('select'=>'id'));
+            if(!empty($mid)){
+                foreach ($mid as $val){
+                    $mids[] = $val['id'];
+                }
+                $where[] = array('memberid' => $mids);
+            }
+
+        }
+
+        return $where;
     }
 }
 class MyScoffoldHelper extends CommonScaffoldHelper {
