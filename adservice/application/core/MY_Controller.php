@@ -25,9 +25,15 @@ class MY_Controller extends BackendController
             'name' => 'advertise',
             'permission' => TRUE,
             'sub' => array(
+<<<<<<< HEAD
                 '投放列表' => array(
                     'url' => '/advertise/campaign',
                     'name' => 'campaign',
+=======
+                '作品列表' => array(
+                    'url' => '/advertise/advertise',
+                    'name' => 'advertise',
+>>>>>>> b5dd876acf649a236529b5432d8c243f79056e9e
                     'permission' => TRUE,
                 ),
                 '广告主' => array(

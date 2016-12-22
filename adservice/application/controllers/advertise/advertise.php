@@ -21,11 +21,11 @@ class Advertise extends MY_Controller {
         );
 
         $column = array(
-            'id' => 'id',
+            '__checkbox__' => 'id',
             '作品名称' => 'productname|show',
             '作者名称' => 'cb_name|show',
             '指导老师' => 'teachername|show',
-            '{sort|updatetime}更新时间' => 'updatetime|show',
+            '更新时间' => 'updatetime|show',
         );
 
         $this->_setConfig(array(
@@ -45,46 +45,59 @@ class Advertise extends MY_Controller {
                 'showCanSel' => TRUE,
                 'keyword' => array(
                     '=' => 'id',
-                    'like' => array('productname'),
+                    'like' => array('productname','nickname','realname'),
                 ),
-                "where"=>$this->fromWhere(),
                 'columns' => $column,
-                'page_size' => 15,
+                'page_size' => 10,
                 'sort' => d($sortFields, 'id DESC'),
             ),
             'helper' => new MyScoffoldHelper($m),
         ));
 
     }
-    public function fromWhere(){
-        $where = array(
-            Db_Sql::LOGIC => 'AND',
+
+    public function export(){
+        param_get(
+            array(
+                'id' => 'STRING',
+            ),'', $params, array()
         );
-
-        $params = array();
-        param_get(array(
-            'kw' => 'string',
-        ), '', $params, array(
-
-        ));
-        if (isset($params['kw'])) {
-            $mid =  F::$f->Model_HuiYuan->select( array('nickname' => array('like'=>$params['kw'])),array('select'=>'id'));
-            if(!empty($mid)){
-                foreach ($mid as $val){
-                    $mids[] = $val['id'];
-                }
-                $where[] = array('memberid' => $mids);
-            }
-
-        }
-
-        return $where;
+        $ids = $params['_GET']['id'];
+        $m = F::$f->Model_Advertiser;
+        $DATA = $m->select(array('id' => explode(',',$ids)),array('select'=>'id'));
+        $title = array('ID');
+        Export::exportExcel($title,$DATA,'作品列表','advertise.xlsx');
     }
+
 }
 class MyScoffoldHelper extends CommonScaffoldHelper {
     public function cb_name($item){
-        $name = F::$f->Model_HuiYuan->getMap($item['memberid']);
-        return d($name['nickname'],$name['realname'],'--');
+        return d($item['nickname'],$item['realname'],'--');
+    }
+    public function beforeListTableFootRender(){
+        $html = <<<HTML
+    <tr class="dark">
+        <td colspan="100">
+            <input type="checkbox" class="sel-all"/>
+            <a class='label label label-info' onclick="exports();">导出</a>
+        </td>
+    </tr>
+<script language="JavaScript" type="application/javascript">
+        function exports(){
+            var chk_value =[]; 
+            $('input[class="sel-item"]:checked').each(function(){ 
+            chk_value.push($(this).val()); 
+            }); 
+            if(chk_value == ''){
+                alert('请选择需要导出的数据！');
+                return false;
+            }
+           location.href = "/advertise/advertise/export?id="+chk_value;//location.href实现客户端页面的跳转
+           
+        }
+</script>
+HTML;
+        echo $html;
     }
 
 
