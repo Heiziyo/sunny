@@ -18,13 +18,21 @@ class Advertise extends MY_Controller {
                 'label' => '作品名称',
                 'rules' => 'required'
             ),
+            array(
+                'field' => 'teachername',
+                'label' => '指导老师',
+                'rules' => 'required'
+            ),
         );
 
         $column = array(
             '__checkbox__' => 'id',
             '作品名称' => 'productname|show',
+            '作品' => 'cb_getimg|show',
+            '作品' => 'cb_getimg|show',
             '作者名称' => 'cb_name|show',
             '指导老师' => 'teachername|show',
+            '学校' => 'cb_school|show',
             '更新时间' => 'updatetime|show',
         );
 
@@ -69,11 +77,27 @@ class Advertise extends MY_Controller {
         Export::exportExcel($title,$DATA,'作品列表','advertise.xlsx');
     }
 
+
+
 }
 class MyScoffoldHelper extends CommonScaffoldHelper {
     public function cb_name($item){
         return d($item['nickname'],$item['realname'],'--');
     }
+    public function cb_getimg($item){
+        if (!file_exists($item['thumbnail'])){
+            return d("<img src='/images/top_logo.jpg' width='150' height='80'>");
+        }
+        return d("<img src='".$item['thumbnail']."'>");
+
+    }
+    public function cb_school($item){
+        $productId =$item['id'];
+        $m = F::$f->Model_schoole;
+        $data = $m->getMap(array('productid'=>$productId));
+        return $data[0]['choolename'];
+    }
+
     public function beforeListTableFootRender(){
         $html = <<<HTML
     <tr class="dark">
@@ -98,6 +122,46 @@ class MyScoffoldHelper extends CommonScaffoldHelper {
 </script>
 HTML;
         echo $html;
+    }
+
+    public function beforeSearchFormRender(){
+        $html =<<<SCREEN
+        
+    <tr class="dark">
+        <td colspan="100">
+           省：<select>
+           
+           </select>
+        </td>
+        <td colspan="100">
+           市：<select>
+           
+           </select>
+        </td>
+        <td colspan="100">
+           区：<select>
+           
+           </select>
+        </td>
+        <td colspan="100">
+           学校：<select>
+           
+           </select>
+        </td>
+    </tr>
+
+
+SCREEN;
+
+
+        echo $html;
+        
+        
+        
+        
+
+
+
     }
 
 
