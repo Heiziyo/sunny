@@ -29,13 +29,11 @@ class Advertise extends MY_Controller {
             '__checkbox__' => 'id',
             '作品名称' => 'productname|show',
             '作品' => 'cb_getimg|show',
-            '作品' => 'cb_getimg|show',
             '作者名称' => 'cb_name|show',
             '指导老师' => 'teachername|show',
             '学校' => 'cb_school|show',
             '更新时间' => 'updatetime|show',
         );
-
         $this->_setConfig(array(
             'primary_key'=>'id',
             'name' => '所有作品',
