@@ -90,7 +90,7 @@ class MyScoffoldHelper extends CommonScaffoldHelper {
     }
     public function cb_school($item){
         $productId =$item['id'];
-        $m = F::$f->Model_schoole;
+        $m = F::$f->Model_Schoole;
         $data = $m->getMap(array('productid'=>$productId));
         return $data[0]['choolename'];
     }
