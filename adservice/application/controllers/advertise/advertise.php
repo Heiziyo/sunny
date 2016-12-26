@@ -78,20 +78,6 @@ class Advertise extends MY_Controller {
     }
 
 
-    //参赛作品
-    public function competition(){
-        $this->data['c_menu'] = 'advertise';
-        $this->data['get_param']=$_GET;
-
-
-    }
-    //获奖作品
-    public function winning(){
-
-
-
-    }
-
 }
 class MyScoffoldHelper extends CommonScaffoldHelper {
     public function cb_name($item){
