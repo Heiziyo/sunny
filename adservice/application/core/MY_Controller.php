@@ -27,8 +27,19 @@ class MY_Controller extends BackendController
                     'url' => '/advertise/advertise',
                     'name' => 'advertise',
                     'permission' => TRUE,
+                ),
+                '参赛作品' => array(
+                    'url' => '/advertise/competition',
+                    'name' => 'competition',
+                    'permission' => TRUE,
+                ),
+                '获奖作品' => array(
+                    'url' => '/advertise/winning',
+                    'name' => 'winning',
+                    'permission' => TRUE,
                 )
             ),
+
         ),
 
         '学校管理' => array(

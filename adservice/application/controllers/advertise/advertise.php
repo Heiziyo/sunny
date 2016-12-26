@@ -38,7 +38,7 @@ class Advertise extends MY_Controller {
 
         $this->_setConfig(array(
             'primary_key'=>'id',
-            'name' => '广告主',
+            'name' => '所有作品',
             'ajax' => FALSE,
             'model' => $m,
             'can_create' => false,
@@ -78,6 +78,19 @@ class Advertise extends MY_Controller {
     }
 
 
+    //参赛作品
+    public function competition(){
+        $this->data['c_menu'] = 'advertise';
+        $this->data['get_param']=$_GET;
+
+
+    }
+    //获奖作品
+    public function winning(){
+
+
+
+    }
 
 }
 class MyScoffoldHelper extends CommonScaffoldHelper {
@@ -130,7 +143,7 @@ HTML;
     <tr class="dark">
         <td colspan="100">
            省：<select>
-           
+                
            </select>
         </td>
         <td colspan="100">
