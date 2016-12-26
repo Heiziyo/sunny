@@ -12,7 +12,7 @@ class School extends MY_Controller {
     {
         parent::__construct(TRUE, '作品管理');
 
-        $this->data['c_menu'] = 'advertise';
+        $this->data['c_menu'] = 'school';
         $this->data['get_param']=$_GET;
         $m = F::$f->Model_Advertiser;
 
