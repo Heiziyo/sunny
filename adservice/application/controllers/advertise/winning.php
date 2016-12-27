@@ -15,7 +15,7 @@ class Winning extends MY_Controller
 
         $this->data['c_menu'] = 'advertise';
         $this->data['get_param'] = $_GET;
-        $m = F::$f->Model_Advertiser;
+        $m = F::$f->Model_Winning;
 
         $sortFields = '';
         $this->rules = array(
@@ -50,10 +50,6 @@ class Winning extends MY_Controller
             'can_create' => false,
             'can_edit' => $this->havePrivilege('acEdit'),
             'can_delete' => $this->havePrivilege('acDelete'),
-//            'delete_alias' => array(
-//                'field' => 'status',
-//                'value' => Db_Model::STATUS_DELETE,
-//            ),
             'fields' => $this->rules,
             'list' => array(
                 'showCanSel' => TRUE,

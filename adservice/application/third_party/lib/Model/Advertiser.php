@@ -13,4 +13,9 @@ class Model_Advertiser extends Model_Handler{
         parent::__construct('vm_product', 'ad_service');
     }
 
+
+    public function getTeacher()
+    {
+
+    }
 }

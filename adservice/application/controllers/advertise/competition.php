@@ -26,8 +26,10 @@ class Competition extends MY_Controller
             array(
                 'field' => 'teachername',
                 'label' => '指导老师',
-                'rules' => 'required'
+                'rules' => 'required',
+                'attrs'   =>  F::$f->Model_Advertiser->getTeacher(),
             ),
+
         );
 
         $column = array(
