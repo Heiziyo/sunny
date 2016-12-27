@@ -114,7 +114,6 @@ class Model_Privilege extends Model_Handler{
         );
 
         $rows = $this->select($where, $attrs);
-
         $nodes = array();
         if($rows){
             $l1 = $l2 = $l3 = array();
@@ -217,6 +216,17 @@ class Model_Privilege extends Model_Handler{
             }
             return $a;
         }, $children);
+    }
+
+    public function truncate(){
+        $db = $this->_getDbInstance();
+        $dbh = $db->getDbWrite();
+        return $dbh->query('TRUNCATE TABLE ' . $this->getTable());
+    }
+
+    public function getDbLog(){
+        $db = $this->_getDbInstance();
+        return $db->getWriteErrorInfo();
     }
 
 }

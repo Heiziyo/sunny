@@ -17,11 +17,14 @@ class Members extends MY_Controller
         $m = F::$f->Model_HuiYuan;
 
         $column = array(
-            'Id' => 'id',
+            '序号' => 'id',
             '姓名' => 'realname',
-            '昵称' => 'nickname|show',
-            '电话' => 'mobile|show',
-            '身份' => 'cb_membertype|show',
+            '学校' => 'cb_school',
+            '年级' => 'cb_grade',
+            '班级' => 'cb_calssnum',
+            '性别' => 'sex|show',
+            '手机' => 'mobile|show',
+            '身份类型' => 'membertype|show',
         );
 
         $this->_setConfig(array(
