@@ -29,6 +29,11 @@ class Winning extends MY_Controller
                 'label' => '指导老师',
                 'rules' => 'required'
             ),
+            array(
+                'field' => 'prise',
+                'label' => '奖项',
+                'rules' => 'required'
+            ),
         );
 
         $column = array(
@@ -38,7 +43,7 @@ class Winning extends MY_Controller
             '作者名称' => 'cb_name|show',
             '指导老师' => 'teachername|show',
             '学校' => 'cb_school|show',
-            '奖项' => 'cb_getschoolName|show',
+            '奖项' => 'prise|show',
             '更新时间' => 'updatetime|show',
         );
 
@@ -70,7 +75,16 @@ class Winning extends MY_Controller
 
 
 class MyScoffoldHelper extends CommonScaffoldHelper {
+    public function cb_name($item){
+        return d($item['nickname'],$item['realname'],'--');
+    }
+    public function cb_getimg($item){
+        if (!file_exists($item['thumbnail'])){
+            return d("<img src='/images/top_logo.jpg' width='150' height='80'>");
+        }
+        return d("<img src='".$item['thumbnail']."'>");
 
+    }
 
 
 }
