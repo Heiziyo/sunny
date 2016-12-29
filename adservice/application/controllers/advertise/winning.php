@@ -42,9 +42,8 @@ class Winning extends MY_Controller
             '作品' => 'cb_getimg|show',
             '作者名称' => 'cb_name|show',
             '指导老师' => 'teachername|show',
-            '学校' => 'cb_school|show',
+            '学校' => 'schoolName|show',
             '奖项' => 'prise|show',
-            '更新时间' => 'updatetime|show',
         );
 
         $this->_setConfig(array(
@@ -53,8 +52,6 @@ class Winning extends MY_Controller
             'ajax' => FALSE,
             'model' => $m,
             'can_create' => false,
-            'can_edit' => $this->havePrivilege('acEdit'),
-            'can_delete' => $this->havePrivilege('acDelete'),
             'fields' => $this->rules,
             'list' => array(
                 'showCanSel' => TRUE,
@@ -76,7 +73,7 @@ class Winning extends MY_Controller
 
 class MyScoffoldHelper extends CommonScaffoldHelper {
     public function cb_name($item){
-        return d($item['nickname'],$item['realname'],'--');
+        return d($item['realname'],$item['nickname'],'--');
     }
     public function cb_getimg($item){
         if (!file_exists($item['thumbnail'])){
