@@ -42,7 +42,7 @@ class Winning extends MY_Controller
             '作品' => 'cb_getimg|show',
             '作者名称' => 'cb_name|show',
             '指导老师' => 'teachername|show',
-            '学校' => 'cb_school|show',
+            '学校' => 'schoolName|show',
             '奖项' => 'prise|show',
             '更新时间' => 'updatetime|show',
         );
