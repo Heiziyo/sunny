@@ -44,7 +44,6 @@ class Winning extends MY_Controller
             '指导老师' => 'teachername|show',
             '学校' => 'schoolName|show',
             '奖项' => 'prise|show',
-            '更新时间' => 'updatetime|show',
         );
 
         $this->_setConfig(array(
@@ -53,8 +52,6 @@ class Winning extends MY_Controller
             'ajax' => FALSE,
             'model' => $m,
             'can_create' => false,
-            'can_edit' => $this->havePrivilege('acEdit'),
-            'can_delete' => $this->havePrivilege('acDelete'),
             'fields' => $this->rules,
             'list' => array(
                 'showCanSel' => TRUE,
@@ -71,12 +68,53 @@ class Winning extends MY_Controller
 
     }
 
+    public function edit(){
+
+        if ($this->isAjax) {
+            $this->form_validation->set_rules($this->rules);
+            if (!$this->form_validation->run()) {
+                return $this->_fail(validation_errors());
+            }
+
+            $param = array();
+            param_request(array(
+                'id'=>'UINT',
+                'productname' => 'STRING',
+                'teachername' => 'STRING',
+                'prise' => 'STRING',
+            ), '', $param, array());
+
+
+            $data1['productname'] = $param['productname'];
+            $data1['teachername'] = $param['teachername'];
+            $data2['prise'] = $param['prise'];
+            $update = F::$f->Model_Winning->update(array('id'=>$param['id']), $data1);
+            if ($update) {
+                $data = array(
+                    'redirect_uri' => '/advertise/winning',
+                    'msg' => '更新成功'
+                );
+                $update2 = F::$f->Model_Winning->update(array('id'=>$param['id']), $data2);
+                if(!$update2){
+                    $this->_fail(json_encode($data2).'更新失败');
+                }
+
+                $this->_succ('ERR_MSG_REDIRECT', $data);
+            } else {
+                $this->_fail('更新失败');
+            }
+        } else {
+            parent::edit();
+        }
+
+    }
+
 }
 
 
 class MyScoffoldHelper extends CommonScaffoldHelper {
     public function cb_name($item){
-        return d($item['nickname'],$item['realname'],'--');
+        return d($item['realname'],$item['nickname'],'--');
     }
     public function cb_getimg($item){
         if (!file_exists($item['thumbnail'])){

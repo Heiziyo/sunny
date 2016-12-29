@@ -12,6 +12,8 @@ class MY_Controller extends BackendController
 
     protected $user = NULL;
 
+    protected $checkLogin = TRUE;
+    public $other = array();
     public $commonAction = array(
         'index', 'login', 'logout'
     );

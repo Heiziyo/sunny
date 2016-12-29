@@ -10,53 +10,55 @@ class School extends MY_Controller {
 
     public function __construct()
     {
-        parent::__construct(TRUE, '作品管理');
+        parent::__construct(TRUE, '学校管理');
 
         $this->data['c_menu'] = 'school';
         $this->data['get_param']=$_GET;
-        $m = F::$f->Model_Advertiser;
+        $m = F::$f->Model_school;
 
         $sortFields = '';
         $this->rules = array(
             array(
-                'field' => 'productname',
-                'label' => '作品名称',
+                'field' => 'province',
+                'label' => '省份',
                 'rules' => 'required'
             ),
             array(
-                'field' => 'teachername',
-                'label' => '指导老师',
+                'field' => 'city',
+                'label' => '市',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'district',
+                'label' => '地区',
+                'rules' => 'required'
+            ),
+            array(
+                'field' => 'schoolName',
+                'label' => '学校名称',
                 'rules' => 'required'
             ),
         );
 
         $column = array(
-            '__checkbox__' => 'id',
-            '作品名称' => 'productname|show',
-            '作品' => 'cb_getimg|show',
-            '作者名称' => 'cb_name|show',
-            '指导老师' => 'teachername|show',
-            '学校' => 'cb_school|show',
+            '序号' => 'id',
+            '省份' => 'province|show',
+            '市' => 'city|show',
+            '地区' => 'district|show',
+            '学校名称' => 'schoolName|show',
             '更新时间' => 'updatetime|show',
         );
         $this->_setConfig(array(
             'primary_key'=>'id',
-            'name' => '所有学校',
+            'name' => '学校',
             'ajax' => FALSE,
             'model' => $m,
-            'can_create' => false,
-            'can_edit' => $this->havePrivilege('acEdit'),
-            'can_delete' => $this->havePrivilege('acDelete'),
-//            'delete_alias' => array(
-//                'field' => 'status',
-//                'value' => Db_Model::STATUS_DELETE,
-//            ),
             'fields' => $this->rules,
             'list' => array(
                 'showCanSel' => TRUE,
                 'keyword' => array(
                     '=' => 'id',
-                    'like' => array('productname','nickname','realname'),
+                    'like' => array('province','city','district','schoolName'),
                 ),
                 'columns' => $column,
                 'page_size' => 10,
