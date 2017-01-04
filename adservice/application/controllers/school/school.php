@@ -14,7 +14,7 @@ class School extends MY_Controller {
 
         $this->data['c_menu'] = 'school';
         $this->data['get_param']=$_GET;
-        $m = F::$f->Model_school;
+        $m = F::$f->Model_School;
 
         $sortFields = '';
         $this->rules = array(
@@ -36,7 +36,7 @@ class School extends MY_Controller {
             array(
                 'field' => 'schoolName',
                 'label' => '学校名称',
-                'rules' => 'required'
+                'rules' => 'required|trim|strip_tags|max_width[50]|unique_row[school.schoolName]'
             ),
         );
 
