@@ -34,7 +34,7 @@ class Competition extends MY_Controller
 
         $column = array(
             '__checkbox__' => 'id',
-            '作品名称' => 'cb_getproductname|show',
+            '作品名称' => 'productname|show',
             '作品' => 'cb_getimg|show',
             '作者名称' => 'cb_getrelname|show',
             '指导老师' => 'cb_getteachername|show',
@@ -75,24 +75,12 @@ class Competition extends MY_Controller
 
 class MyScoffoldHelper extends CommonScaffoldHelper {
 
-    public function cb_getproductname($item){
-        $productId =$item['productid'];
-        $m = F::$f->Model_Competition;
-        $data = $m->getProductName(array('productid'=>$productId));
-        return $data[0]['productname'];
-    }
-
     public function cb_getrelname($item){
-        $productId =$item['productid'];
-        $m = F::$f->Model_Competition;
-        $data = $m->getProductName(array('productid'=>$productId));
-        return d($data[0]['realname'],"--");
+
+        return d($item['realname'],"--");
     }
     public function cb_getteachername($item){
-        $productId =$item['productid'];
-        $m = F::$f->Model_Competition;
-        $data = $m->getProductName(array('productid'=>$productId));
-        return $data[0]['teachername'];
+         return d($item['teachername'],"--");
     }
     public function cb_getimg($item){
         $productId =$item['productid'];
@@ -107,9 +95,6 @@ class MyScoffoldHelper extends CommonScaffoldHelper {
     }
     //schoolName
     public function cb_getschoolName($item){
-        $productId =$item['productid'];
-        $m = F::$f->Model_Competition;
-        $data = $m->getProductName(array('productid'=>$productId));
-        return d($data[0]['schoolName'],"--");
+        return d($item['schoolName'],"--");
     }
 }

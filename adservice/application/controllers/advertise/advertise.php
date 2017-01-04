@@ -120,47 +120,4 @@ class MyScoffoldHelper extends CommonScaffoldHelper {
 HTML;
         echo $html;
     }
-
-    public function beforeSearchFormRender(){
-        $html =<<<SCREEN
-        
-    <tr class="dark">
-        <td colspan="100">
-           省：<select>
-                
-           </select>
-        </td>
-        <td colspan="100">
-           市：<select>
-           
-           </select>
-        </td>
-        <td colspan="100">
-           区：<select>
-           
-           </select>
-        </td>
-        <td colspan="100">
-           学校：<select>
-           
-           </select>
-        </td>
-    </tr>
-
-
-SCREEN;
-
-
-        echo $html;
-        
-        
-        
-        
-
-
-
-    }
-
-
-
 }
