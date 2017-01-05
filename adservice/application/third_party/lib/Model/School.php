@@ -25,5 +25,36 @@ class Model_School extends Model_Handler
         }
         return $Map;
     }
-
+    public function getProvince(){
+        $Map   = array();
+        $list = $this->select(array(),array('group_by'=>'province'));
+        foreach($list as $row) {
+            $Map[$row['province']] = $row['province'];
+        }
+        return $Map;
+    }
+    public function getCity(){
+        $Map   = array();
+        $list = $this->select(array(),array('group_by'=>'city'));
+        foreach($list as $row) {
+            $Map[$row['city']] = $row['city'];
+        }
+        return $Map;
+    }
+    public function getArea(){
+        $Map   = array();
+        $list = $this->select(array(),array('group_by'=>'district'));
+        foreach($list as $row) {
+            $Map[$row['district']] = $row['district'];
+        }
+        return $Map;
+    }
+    public function getSchool(){
+        $Map   = array();
+        $list = $this->select(array(),array('group_by'=>'schoolName'));
+        foreach($list as $row) {
+            $Map[$row['schoolName']] = $row['schoolName'];
+        }
+        return $Map;
+    }
 }

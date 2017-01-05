@@ -31,7 +31,7 @@ class Advertise extends MY_Controller {
             '作品' => 'cb_getimg|show',
             '作者名称' => 'cb_name|show',
             '指导老师' => 'teachername|show',
-            '学校' => 'cb_school|show',
+            '学校' => 'schoolName|show',
             '更新时间' => 'updatetime|show',
         );
         $this->_setConfig(array(
@@ -53,8 +53,21 @@ class Advertise extends MY_Controller {
                     '=' => 'id',
                     'like' => array('productname','nickname','realname'),
                 ),
+                'options' => array(
+                    'province' => F::$f->Model_School->getProvince(),
+                    'city' => F::$f->Model_School->getCity(),
+                    'area' => F::$f->Model_School->getArea(),
+                    'school' => F::$f->Model_School->getSchool(),
+
+                ),
+                'optionname' => array(
+                    "province" => "省",
+                    "city" => "市",
+                    "area"=>"区",
+                    "school"=>'学校'
+                ),
                 'columns' => $column,
-                'page_size' => 10,
+                'page_size' => 8,
                 'sort' => d($sortFields, 'id DESC'),
             ),
             'helper' => new MyScoffoldHelper($m),
@@ -63,16 +76,10 @@ class Advertise extends MY_Controller {
     }
 
     public function export(){
-        param_get(
-            array(
-                'id' => 'STRING',
-            ),'', $params, array()
-        );
-        $ids = $params['_GET']['id'];
         $m = F::$f->Model_Advertiser;
-        $DATA = $m->select(array('id' => explode(',',$ids)),array('select'=>'id'));
-        $title = array('ID');
-        Export::exportExcel($title,$DATA,'作品列表','advertise.xlsx');
+        $DATA = $m->select(array(),array('select'=>'id,productname,realname,teachername'));
+        $title = array('ID','作品名称','作者名称','指导老师','学校');
+        Export::exportExcel($title,$DATA,'作品列表',date('Y-m-d',time()).'_所有作品.xlsx');
     }
 
 
@@ -100,20 +107,13 @@ class MyScoffoldHelper extends CommonScaffoldHelper {
     <tr class="dark">
         <td colspan="100">
             <input type="checkbox" class="sel-all"/>
-            <a class='label label label-info' onclick="exports();">导出</a>
+            <a class='label label label-info' onclick="exports();">导出所有作品</a>
         </td>
     </tr>
 <script language="JavaScript" type="application/javascript">
         function exports(){
-            var chk_value =[]; 
-            $('input[class="sel-item"]:checked').each(function(){ 
-            chk_value.push($(this).val()); 
-            }); 
-            if(chk_value == ''){
-                alert('请选择需要导出的数据！');
-                return false;
-            }
-           location.href = "/advertise/advertise/export?id="+chk_value;//location.href实现客户端页面的跳转
+            
+           location.href = "/advertise/advertise/export";//location.href实现客户端页面的跳转
            
         }
 </script>
