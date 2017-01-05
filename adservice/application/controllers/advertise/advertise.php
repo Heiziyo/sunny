@@ -116,7 +116,7 @@ class Advertise extends MY_Controller {
         if ($params['school']) {
             $tj = explode(',',$params['school']);
             $where = array(
-                array('school' => $tj),
+                array('schoolName' => $tj),
             );
         }
 
