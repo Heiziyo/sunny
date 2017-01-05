@@ -110,7 +110,7 @@ class Advertise extends MY_Controller {
         if ($params['area']) {
             $tj = explode(',',$params['area']);
             $where = array(
-                array('area' => $tj),
+                array('district' => $tj),
             );
         }
         if ($params['school']) {
