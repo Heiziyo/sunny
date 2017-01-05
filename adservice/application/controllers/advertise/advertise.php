@@ -98,25 +98,25 @@ class Advertise extends MY_Controller {
         if ($params['province']) {
             $tj = explode(',',$params['province']);
             $where = array(
-                array('b.province' => $tj),
+                array('province' => $tj),
             );
         }
         if ($params['city']) {
             $tj = explode(',',$params['city']);
             $where = array(
-                array('b.city' => $tj),
+                array('city' => $tj),
             );
         }
         if ($params['area']) {
             $tj = explode(',',$params['area']);
             $where = array(
-                array('b.area' => $tj),
+                array('area' => $tj),
             );
         }
         if ($params['school']) {
             $tj = explode(',',$params['school']);
             $where = array(
-                array('b.school' => $tj),
+                array('school' => $tj),
             );
         }
 
