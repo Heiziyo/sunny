@@ -58,8 +58,8 @@ class Advertise extends MY_Controller {
                     'city' => F::$f->Model_School->getCity(),
                     'area' => F::$f->Model_School->getArea(),
                     'school' => F::$f->Model_School->getSchool(),
-
                 ),
+                'where' => $this->formatWhereCond(),
                 'optionname' => array(
                     "province" => "省",
                     "city" => "市",
@@ -77,11 +77,51 @@ class Advertise extends MY_Controller {
 
     public function export(){
         $m = F::$f->Model_Advertiser;
-        $DATA = $m->select(array(),array('select'=>'id,productname,realname,teachername'));
-        $title = array('ID','作品名称','作者名称','指导老师','学校');
+        $DATA = $m->select(array(),array('select'=>'id,productname,realname,teachername,schoolName,province,city,district'));
+        //id 作品名 作者名 指导老师  学校  省.市.区
+        $title = array('ID','作品名称','作者名称','指导老师','学校','省','市','区');
         Export::exportExcel($title,$DATA,'作品列表',date('Y-m-d',time()).'_所有作品.xlsx');
     }
+    public function formatWhereCond()
+    {
+        $params = array();
+        param_get(array(
+            'province' => 'STRING',
+            'city' => 'STRING',
+            'area' => 'STRING',
+            'school' => 'STRING',
+        ), '', $params, array());
+        $where = array(array(
+            Db_Sql::LOGIC => 'AND',
+        ));
 
+        if ($params['province']) {
+            $tj = explode(',',$params['province']);
+            $where = array(
+                array('b.province' => $tj),
+            );
+        }
+        if ($params['city']) {
+            $tj = explode(',',$params['city']);
+            $where = array(
+                array('b.city' => $tj),
+            );
+        }
+        if ($params['area']) {
+            $tj = explode(',',$params['area']);
+            $where = array(
+                array('b.area' => $tj),
+            );
+        }
+        if ($params['school']) {
+            $tj = explode(',',$params['school']);
+            $where = array(
+                array('b.school' => $tj),
+            );
+        }
+
+        return $where;
+    }
 
 }
 class MyScoffoldHelper extends CommonScaffoldHelper {

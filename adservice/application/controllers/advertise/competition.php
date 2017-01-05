@@ -69,7 +69,13 @@ class Competition extends MY_Controller
         ));
 
     }
-
+    public function export(){
+        $m = F::$f->Model_Competition;
+        $DATA = $m->select(array(),array('select'=>'id,productname,realname,teachername,schoolName,province,city,district'));
+        //id 作品名 作者名 指导老师  学校  省.市.区
+        $title = array('ID','作品名称','作者名称','指导老师','学校','省','市','区');
+        Export::exportExcel($title,$DATA,'作品列表',date('Y-m-d',time()).'_所有参赛作品.xlsx');
+    }
 }
 
 
@@ -96,5 +102,23 @@ class MyScoffoldHelper extends CommonScaffoldHelper {
     //schoolName
     public function cb_getschoolName($item){
         return d($item['schoolName'],"--");
+    }
+    public function beforeListTableFootRender(){
+        $html = <<<HTML
+    <tr class="dark">
+        <td colspan="100">
+            <input type="checkbox" class="sel-all"/>
+            <a class='label label label-info' onclick="exports();">导出所有参赛作品</a>
+        </td>
+    </tr>
+<script language="JavaScript" type="application/javascript">
+        function exports(){
+            
+           location.href = "/advertise/competition/export";//location.href实现客户端页面的跳转
+           
+        }
+</script>
+HTML;
+        echo $html;
     }
 }
