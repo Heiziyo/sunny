@@ -14,30 +14,12 @@ class Statistics extends MY_Controller {
 
         $this->data['c_menu'] = 'statistics';
         $this->data['get_param']=$_GET;
-        $m = F::$f->Model_Advertiser;
+        $m = F::$f->Model_Click;
 
         $sortFields = '';
-        $this->rules = array(
-            array(
-                'field' => 'productname',
-                'label' => '作品名称',
-                'rules' => 'required'
-            ),
-            array(
-                'field' => 'teachername',
-                'label' => '指导老师',
-                'rules' => 'required'
-            ),
-        );
-
         $column = array(
-            '__checkbox__' => 'id',
-            '作品名称' => 'productname|show',
-            '作品' => 'cb_getimg|show',
-            '作者名称' => 'cb_name|show',
-            '指导老师' => 'teachername|show',
-            '学校' => 'cb_school|show',
-            '更新时间' => 'updatetime|show',
+            '登陆次数' => 'cb_member|show',
+            '登陆时间' => 'updatetime|show',
         );
         $this->_setConfig(array(
             'primary_key'=>'id',
@@ -45,22 +27,17 @@ class Statistics extends MY_Controller {
             'ajax' => FALSE,
             'model' => $m,
             'can_create' => false,
-            'can_edit' => $this->havePrivilege('acEdit'),
-            'can_delete' => $this->havePrivilege('acDelete'),
-//            'delete_alias' => array(
-//                'field' => 'status',
-//                'value' => Db_Model::STATUS_DELETE,
-//            ),
-            'fields' => $this->rules,
+            'can_edit' => false,
+            'can_delete' => false,
             'list' => array(
                 'showCanSel' => TRUE,
                 'keyword' => array(
                     '=' => 'id',
-                    'like' => array('productname','nickname','realname'),
+                    'like' => array('updatetime'),
                 ),
                 'columns' => $column,
                 'page_size' => 10,
-                'sort' => d($sortFields, 'id DESC'),
+                'sort' => d($sortFields, 'updatetime DESC, id DESC'),
             ),
             'helper' => new MyScoffoldHelper($m),
         ));
@@ -73,7 +50,11 @@ class Statistics extends MY_Controller {
 }
 class MyScoffoldHelper extends CommonScaffoldHelper {
 
+    public function cb_member($item){
 
+       $res = F::$f->Model_HuiYuan->getMap($item['memberid']);
+        return d($res['realname'],$res['nickname'],'--');
+    }
 
 
 }
